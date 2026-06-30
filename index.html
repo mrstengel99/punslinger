@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punslinger 2000 — Pun Generator for POD Creators</title>
+<link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIADvAAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAALZJREFUeJxjYKAQMOKSOOGo9x9dzGL/JQz1GALYNOIziIlUzejqmLAJkmIICy4FqktXMPz/9ZPh48GDDGxi4gxc+voM365cZnja3oqijgmf7f++/2B4vWAew+vFCxkYGBgYWMXEMVyB0wUMDAwMzPz8DKpLV8D5n48cwlCD1wCYF/7//Mnw/cZ1hq/nz5FmAMwL+AATXlkiADxBkBqNDAyQBEWxC+AGYEvnhGxHMYAUQ5DVUZwbAQotTrYpakahAAAAAElFTkSuQmCC" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAtklEQVR4nGNgoBAw4pI44aj3H13MYv8lDPUYAtg04jOIiVTN6OqYsAmSYggLLgWqS1cw/P/1k+HjwYMMbGLiDFz6+gzfrlxmeNreiqKOCZ/t/77/YHi9YB7D68ULGRgYGBhYxcQxXIHTBQwMDAzM/PwMqktXwPmfjxzCUIPXAJgX/v/8yfD9xnWGr+fPkWYAzAv4ABNeWSIAPEGQGo0MDJAERbEL4AZgS+eEbEcxgBRDkNVRnBsBCi1OtilqRqEAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABjklEQVR4nM2XzUrDQBSFz6T1Jw3GlSjo1kUTKURE6q55EfGV/HkBEcGnMMUKza7QZ0ig4qpJBI3UuCgttUkmM9OJ6V3m3jn349zLJAEqDiJyyLVbSV6u7Qy5NJmLaU1XgSksEGnMA6KU3bxIJxdAVvMivUwA2c1puimAsprn6RNacjmOH5/SD5MEkzBE7HsYdx2Erz0mkNli1pmqaUEIaroOVTegNg1o1ilGdzdAwmbkfASyrN9pX2C3YxfWzfoJO/AxGOD94R6kXkPDPMHe5RVAphPVOzbGzjOTjjDAz9cnvt9GAIDY96GdnaNhmgCAzcMjZh0FkGM/WVxnxgvetVuJsAPK1jY29g+mIzBMqE1jnos9j1lHGECzLGiWlZkLug6zDvVdIBKR28eYA2D1ewDAJIoQ+x6CroOg98J8B6wEELp9jG6vRY/PQ/oIhAB4P6NkRdsZkvVwoMrgeh3LjNnYK3fgD8B/LeNin5QDZUMs62eOoCyILN3cHZANkadHXUJZEDSd9f835IXhde0XMVeQQRZ1ZU8AAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAIXklEQVR4nO3dzW9UVRjH8V9vW+m0DYJSJEQwGkEFBVQw7gjGaKKJJsa9LxtdGBfqyrjSQKIS4z+gSHwJcWEMUUxQg4kaie8UF2KMxkpbSlsLlM5bZ+64sUkdZto7M8+95znP+X3W5nLmnC+PZ4YyAERERERE1Iou1wuw4PiebTWpZ915bJhn0gFuXgskw20VQ0+Gm9SEy3iTYuSX4ob8x4eAl8PAAw/aQsTNhBp3cC/acsTNhBR3MC80xJDrhRC26RfIiJuzGrfJF8WQk7MWtqkXw5DbZyVsEy+CIcvxPezI9QI6xZhl+b6f3v5u9H3jfeDjtPZuwQw5ez6F7dWVgzG74dO+e/E7z6cNtU77tFY/oRmzLtrPQ3XQ2jcvVJrPReX/PjRvGP2ftiuIugnNmP2i7bxUBa1tcygZTeemJmhNm0Kt03J+KoLWshnUGQ3n6PRCr2EDKB2u3iw6m9CM2TZX5+skaMYcBhfnnHnQjDksWZ93pkEz5jBlee4qPuUgkpJZ0JzOYcvq/DMJmjETkE0HqQfNmGmxtHtINWjGTI2k2UVqQTNmWkpaffBTDjIllaA5nSmJNDoRD5oxUyukexENmjFTOyS74R2aTBELmtOZOiHVj0jQjJkkSHTEKweZ0nHQnM4kqdOeOKHJlI6C5nSmNHTSVdtBM2ZKU7t98cpBprQVNKczZaGdznrSWIhPNr17yMmvW6tUEBeLqJWKiIslVC/OYn5iAvPj4yifGUf57xGUx8edrM1nLX+7jbXp7CroJCrT08j/Moz8yZOY++lHxMWi6yU50cq3MAU/oTXrufJKrNy9Byt370FcKODCV1/i/KdHUR497XpparU0oa1NZ0D3hG5m7scfMPnO25ifOON6KZlJOqU5oT00cNvt6N+2HeeOfIx/PvwAcankeklq8GM7T3X19GD1Aw9iw4t70btunevlqJE4aIvXDQsuu/pqbHxpHwZuvc31UlKVtD9OaAOi/n6sf+Y5DO7c5XopziUKmtPZA1GEdU89jdyWra5XkpokHXJCG9LV24v1zz6H3qG1rpfiDIM2JurL4aonngS6VP3zgZlZNmheN/yTu2kLVt1zr+tlpGK5HjmhjbrioYcR9fW5XkbmGLRR3YODuPyuu10vI3NLBs3rht9W3Xc/urq7XS9D3FJd8o++hZT+/AMjLzyf6L+NcjlE/QPoXbMGfZs2Y2DHDuRu2iK+pp7Vq5HbejPywyfEn60Vg3YgLhQQFwqoTE+hcOpXzHx0GCs2bsTQo48jd8ONor/W4M5dQQXNO7QSpZERjO59Cec//0z0uYO37wzqI7ymQfP+nL1atYqzb72J/MlhsWd2r1qF3qEhsedp0axPTmht4hhnD7wBxLHYI1dsvEbsWdoxaIXmJyZw8btvxZ532YYNYs/SjkErNXdC7o1cSD/bwaCVKv7+m9izov5+sWdp1zBoviF0r3r+gtizolxO7FmaNOqUE1qpuJAXe1bUZzPoRhi0UlFO7ppQK4fzl2gZtFLdl68Ue1Y1LzfttWPQSvVdv1nsWZLXF+0YtFID27eLPWt+YkLsWdpdEjQ/4XCv96p1GNx1h9jzSiMjYs/Spr5XTmhtoghrH3sciOSOpjzyl9iztOOPjyrS1d2NoUceQ/8t28SeOT85ifnJSbHnaceglUjr56Hnvv9O9HnaMWgHor4cooF+9K4ZQt+mTRjYviO1L4iR/CEnHzBoISuuvU7dV/OWR0dR+O2U62Vkim8KDZv56DBQC+tDKwZtVGV6GrNff+V6GZlj0EadPXgAtWrV9TIyx6ANmj3+DeZ++N71Mpxg0MZUpqYwefCA62U4w6ANqV6cxejL+1C9IPeXA3zDoI2Ii0WM7X8V5bEx10txip9DG1CZmsLY/ldQ+tvuDyElxaA9Vzj1K8Zffy3oa8ZiDNpTcaGA6fcP4dynR4P7w5OlMGjfxDFmj3+DqffeQWVmxvVq1GHQnoiLBVz44hhmPjmCytSU6+WoxaAVq5w7h/yJnzH380/IDw8jLhZcL0m9S4K+89hwF/8aVvpq1SpqpRLiUhFxsYh4Lo/5sxMoj42iPDaG8unTKI+N8n68jPp/1J4TWkgr3+BP6eEfrJApDJpMYdBkCoMmUxoGXf/OkUijRp1yQpMpDJpMYdBkCoMmU5oGzTeGpFmzPjmhyRQGTaYwaDJlyaB5jyaNluqSE5pMYdBkyrJB89pBmizXIyc0mcKgyZREQfPaQRok6ZATmkxJHDSnNLmUtD9OaDKFQZMpLQXNawe50Ep3nNBkSlsTl999R1lp9VbACU2mtBU079KUhXY644QmU9oOmlOa0tRuXx1NaEZNaeikK145yJSOg+aUJkmd9sQJTaaIBM0pTRIkOhKb0IyaOiHVD68cZIpo0JzS1A7JbsQnNKOmVkj3ksqVg1FTEml0wjs0mZJa0JzStJS0+kh1QjNqaiTNLlK/cjBqWiztHjK5QzNqArLpILM3hYw6bFmdPz/lIFMyDZpTOkxZnnvmE5pRhyXr83Zy5WDUYXBxzs7u0IzaNlfnqyIqfhOTHa4HlYpPOVxvAsnQcI4qggZ0bAa1T8v5qQka0LMp1BpN56YqaEDX5tDytJ2XqsXU45tFvbSFvEDdhF5M66aFTvO5qA4a0L15IdJ+HqoXV49XEHe0h7xA/YRezJdNtcanffdmofU4rdPnU8gLvFtwPYYtz8eQF3h15WjE583XyPf99Hrx9Tit2+d7yAtMvIh6DDs5KyEvMPVi6jHs5qyFvMDki2qEcduNeDHzL7BeiGGHEPKCYF5oI5bjDinixYJ80Y1YiDvUiBcLfgOa8SFwBnwpbkgLXEbOeJPhJgmQDJ3hEhEREan3L2JK3zIBGLysAAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDE6D6;
+    --paper-dark: #DDD2B4;
+    --paper-darker: #CBBE9B;
+    --ink: #1B2A4A;
+    --charcoal: #2B2B28;
+    --stamp-red: #C8412E;
+    --stamp-red-dark: #9E2F20;
+    --mustard: #D9A440;
+    --teal: #2E6E62;
+    --line: rgba(27,42,74,0.18);
+    --chip-off-bg: #C9C2AE;
+    --chip-off-text: #6E6A5C;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  body{
+    background: var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(27,42,74,0.05) 1px, transparent 0);
+    background-size: 18px 18px;
+    color: var(--charcoal);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  a{ color: var(--ink); }
+  .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding: 32px 24px 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
+  }
+  .byok-bar{
+    display:flex; justify-content:flex-end; align-items:center; gap:10px;
+    font-size:12px; color: var(--ink); opacity:0.8; max-width:1100px; margin:0 auto 14px;
+    flex-wrap:wrap;
+  }
+  .byok-bar button{
+    background:none; border: 1.5px solid var(--ink); border-radius: 4px; padding: 4px 10px;
+    font-size:12px; cursor:pointer; color: var(--ink);
+  }
+  .byok-bar button:hover{ background: var(--ink); color: var(--paper); }
+  .setup-group{ border: 2px solid var(--ink); border-radius: 6px; margin-top: 30px; background: rgba(255,255,255,0.4); overflow:hidden; }
+  .setup-group .niche-block{ padding: 22px; border-bottom: 2px solid var(--ink); }
+  .setup-group .niche-block label{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink);
+    opacity:0.7; display:block; margin-bottom: 6px;
+  }
+  .setup-group .niche-block input[type="text"]{
+    width: 100%; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500;
+    padding: 13px 16px; border: 2px solid var(--ink); border-radius: 4px;
+    background: #FBF8F0; color: var(--ink);
+  }
+  .setup-group .niche-block input:focus{ outline: 3px solid var(--mustard); outline-offset: 1px; }
+  .setup-group .niche-block input::placeholder{ color: rgba(27,42,74,0.4); }
+  .setup-group #setupPanel{ margin-top:0; border:none; border-radius:0; background:transparent; padding:22px; }
+  .hero-inner{ max-width: 1100px; margin: 0 auto; }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--stamp-red); font-weight: 700;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:10px; height:10px; background: var(--stamp-red); border-radius:50%; display:inline-block;}
+  h1.logo{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 900; font-style: italic;
+    font-size: clamp(44px, 8vw, 88px);
+    line-height: 0.9; margin: 6px 0 4px; color: var(--ink);
+    text-transform: uppercase;
+  }
+  .logo .accent{ color: var(--stamp-red); }
+  .tagline{ font-size: 16px; max-width: 560px; opacity: 0.85; margin: 0 0 26px; }
+
+  .field-row{ display:flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+  .field{ flex: 1 1 280px; }
+  .field label{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink);
+    opacity:0.7; display:block; margin-bottom: 6px;
+  }
+  .field input[type="text"]{
+    width: 100%; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500;
+    padding: 13px 16px; border: 2px solid var(--ink); border-radius: 4px;
+    background: #FBF8F0; color: var(--ink);
+  }
+  .field input:focus{ outline: 3px solid var(--mustard); outline-offset: 1px; }
+  .field input::placeholder{ color: rgba(27,42,74,0.4); }
+
+  .btn{
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.07em; font-size: 13px; border: 2px solid var(--ink); border-radius: 4px;
+    padding: 0 18px; cursor: pointer; background: var(--ink); color: var(--paper);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    display:flex; align-items:center; gap:8px; justify-content:center;
+  }
+  .btn:hover{ transform: translateY(-2px); box-shadow: 0 4px 0 var(--ink); }
+  .btn:active{ transform: translateY(0); box-shadow:none; }
+  .btn:focus-visible{ outline: 3px solid var(--mustard); outline-offset: 2px; }
+  .btn[disabled]{ opacity: 0.45; cursor: not-allowed; transform:none; box-shadow:none; }
+  .btn-primary{ background: var(--stamp-red); border-color: var(--stamp-red-dark); min-width: 170px; align-self: stretch; }
+  .btn-primary:hover{ box-shadow: 0 4px 0 var(--stamp-red-dark); }
+  .btn-ghost{ background: transparent; color: var(--ink); }
+  .btn-sm{ font-size: 11px; padding: 7px 12px; min-width:auto; }
+
+  .byok-note{
+    margin-top: 16px; font-size: 13px; display:flex; align-items:center; gap: 10px;
+    flex-wrap: wrap; color: var(--ink); opacity: 0.8;
+  }
+  .byok-note button{
+    background:none; border: 1.5px solid var(--ink); border-radius: 4px; padding: 5px 11px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform:uppercase;
+    cursor:pointer; color: var(--ink);
+  }
+  .byok-note button:hover{ background: var(--ink); color: var(--paper); }
+
+  /* ---------- Panel ---------- */
+  .panel{
+    margin-top: 30px; padding: 22px; border: 2px solid var(--ink); border-radius: 6px;
+    background: rgba(255,255,255,0.4);
+  }
+  .panel h2{
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 24px;
+    text-transform: uppercase; color: var(--ink); margin: 0 0 4px;
+  }
+  .panel .sub{ font-size: 13px; opacity: 0.7; margin: 0 0 16px; }
+  .kw-group{ margin-bottom: 16px; }
+  .kw-group-label{
+    font-family:'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--stamp-red); font-weight:700; display:block; margin-bottom: 8px;
+  }
+  .kw-chips{ display:flex; flex-wrap: wrap; gap: 8px; }
+  .kw-chip{
+    font-family:'JetBrains Mono', monospace; font-size: 12px; border: 1.5px solid transparent;
+    border-radius: 100px; padding: 6px 13px; cursor: pointer;
+  }
+  .kw-chip.selected{ background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .kw-chip:not(.selected){ background: transparent; color: var(--ink); opacity: 0.75; border-color: rgba(27,42,74,0.35); }
+  .kw-chip.custom{ border-color: var(--mustard) !important; }
+  .kw-chip:focus-visible{ outline: 3px solid var(--mustard); outline-offset:2px; }
+  .kw-custom-row{ display:flex; gap: 8px; margin-top: 8px; max-width: 420px; }
+  .kw-custom-row input{
+    flex:1; padding: 9px 12px; border: 1.5px solid var(--ink); border-radius: 4px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 13px; background:#FBF8F0; color:var(--ink);
+  }
+
+  /* ---------- Category steppers ---------- */
+  .stepper-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 12px; margin-top: 6px;
+  }
+  .stepper-card{
+    border: 1.5px solid var(--line); border-radius: 6px; padding: 12px 14px; background: #FBF8F0;
+  }
+  .stepper-card .name{
+    font-family:'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 16px;
+    color: var(--ink); text-transform: uppercase; margin: 0;
+  }
+  .stepper-card .def{ font-size: 12px; opacity: 0.65; margin: 3px 0 10px; line-height:1.35; min-height: 32px; }
+  .stepper-controls{ display:flex; align-items:center; gap: 10px; }
+  .stepper-btn{
+    width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink); background: transparent;
+    color: var(--ink); font-size: 15px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+  .stepper-btn:hover{ background: var(--ink); color: var(--paper); }
+  .stepper-btn:focus-visible{ outline: 3px solid var(--mustard); outline-offset:2px; }
+  .stepper-btn[disabled]{ opacity: 0.3; cursor:not-allowed; }
+  .stepper-count{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size: 16px; min-width: 22px; text-align:center; }
+
+  .total-row{
+    display:flex; align-items:center; gap: 14px; margin-top: 18px; padding-top: 14px;
+    border-top: 2px dashed var(--paper-darker); flex-wrap: wrap;
+  }
+  .total-row .total{ font-family:'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: var(--ink); }
+  .total-row .total.capped{ color: var(--stamp-red); }
+  .panel-actions{ margin-top: 18px; }
+
+  /* ---------- Status ---------- */
+  .status{ margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); opacity: 0.8; }
+  .status.error{ color: var(--stamp-red); opacity:1; font-weight:700; }
+  .empty-state{ margin-top: 50px; text-align:center; padding: 46px 20px; border: 2px dashed var(--paper-darker); border-radius: 8px; }
+  .empty-state h2{ font-family: 'Big Shoulders Display', sans-serif; font-size: 28px; font-weight: 800; color: var(--ink); text-transform: uppercase; margin: 0 0 8px; }
+  .empty-state p{ opacity:0.7; max-width: 440px; margin: 0 auto; }
+
+  .gallery-toolbar{ display:flex; justify-content: flex-end; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+
+  /* ---------- Category blocks / cards ---------- */
+  .category-block{ margin-top: 36px; }
+  .category-head{ display:flex; align-items: baseline; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 6px; }
+  .category-head .num{ font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--stamp-red); font-weight:700; }
+  .category-head h3{ font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 25px; text-transform: uppercase; color: var(--ink); margin: 0; flex: 1; }
+  .category-head .regen-btn{
+    font-family:'JetBrains Mono', monospace; font-size: 11px; background: none; border: 1.5px solid var(--ink);
+    color: var(--ink); border-radius: 4px; padding: 5px 10px; cursor:pointer;
+  }
+  .category-head .regen-btn:hover{ background: var(--ink); color: var(--paper); }
+  .category-def{ font-size: 13px; opacity: 0.65; margin: 0 0 16px; }
+
+  .card-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+
+  .pun-card{
+    position: relative; background: #FBF8F0; border: 1.5px solid var(--ink); border-radius: 2px;
+    padding: 18px 16px 16px; min-height: 110px; transform: rotate(var(--tilt, 0deg));
+    transition: transform 0.15s ease, box-shadow 0.15s ease; box-shadow: 3px 3px 0 rgba(27,42,74,0.12);
+  }
+  .pun-card:hover{ transform: rotate(0deg) translateY(-2px); box-shadow: 4px 5px 0 rgba(27,42,74,0.18); }
+  .pun-card::before{ content:""; position:absolute; top:-1px; left:14px; right:14px; height:0; border-top: 2px dashed var(--paper-darker); }
+  .pun-card .text{ font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.35; color: var(--ink); margin: 4px 0 8px; padding-right: 48px; }
+  .pun-card .visual{ font-size: 13px; font-style: italic; opacity: 0.75; line-height: 1.4; margin: 0; }
+  .pun-card .meta{ font-family:'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); opacity: 0.45; margin-bottom: 4px; display:block; }
+  .pun-card .technique-tag{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    background: var(--mustard); color: var(--ink); border-radius: 3px; padding: 2px 6px; margin-top: 8px;
+  }
+
+  .copy-btn{
+    position: absolute; top: 0; right: 0; width: 56px; height: 56px; border-radius: 50%;
+    border: none; background: transparent; cursor: pointer; display:flex; align-items:center;
+    justify-content:center; padding:0; z-index: 2;
+  }
+  .copy-btn .copy-btn-visual{
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--ink);
+    background: #FBF8F0; display:flex; align-items:center; justify-content:center;
+    font-size: 16px; color: var(--ink); transition: transform 0.08s ease, background 0.15s ease;
+    pointer-events: none;
+  }
+  .copy-btn:hover .copy-btn-visual{ transform: scale(1.08); }
+  .copy-btn:focus-visible{ outline: 3px solid var(--mustard); outline-offset:2px; }
+  .copy-btn.copied .copy-btn-visual{ background: var(--teal); border-color: var(--teal); color: #fff; }
+  .copy-btn svg, .copy-btn svg *{ pointer-events: none !important; }
+
+  /* Anthropomorphic character */
+  .character-box{
+    display:flex; gap: 14px; align-items:flex-start; border: 2px solid var(--ink); border-radius: 6px;
+    padding: 14px 16px; margin-bottom: 18px; background: rgba(217,164,64,0.16);
+  }
+  .character-box .avatar{
+    width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Display', sans-serif;
+    font-weight: 800; font-size: 20px; flex-shrink:0;
+  }
+  .character-box .cname{ font-family:'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 18px; color: var(--ink); margin: 0 0 2px; text-transform: uppercase; }
+  .character-box .canchor{ font-size: 13px; margin: 0 0 2px; opacity: 0.85; }
+  .character-box .cpersonality{ font-size: 12px; opacity: 0.65; margin: 0; font-style: italic; }
+
+  .tone-badge{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.05em; border-radius: 3px; padding: 2px 7px; margin-bottom: 8px;
+  }
+  .tone-badge.snarky{ background: var(--stamp-red); color: #fff; }
+  .tone-badge.doubleMeaning{ background: var(--teal); color: #fff; }
+  .tone-badge.rivalry{ background: var(--ink); color: var(--paper); }
+  .pun-card .rival-line{ font-size: 12px; opacity: 0.7; margin: 6px 0 0; }
+
+  /* ---------- Settings modal ---------- */
+  .modal-overlay{ position: fixed; inset:0; background: rgba(27,42,74,0.45); display:flex; align-items:center; justify-content:center; z-index: 60; padding: 20px; }
+  .modal{ background: var(--paper); border: 3px solid var(--ink); max-width: 460px; width: 100%; padding: 28px; border-radius: 4px; max-height: 88vh; overflow-y: auto; }
+  .modal h2{ font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 26px; text-transform: uppercase; color: var(--ink); margin: 0 0 10px; }
+  .modal p{ font-size: 14px; line-height: 1.55; opacity: 0.85; margin: 0 0 14px; }
+  .modal ol{ font-size: 14px; line-height: 1.6; opacity: 0.85; margin: 0 0 16px; padding-left: 20px; }
+  .modal label{ font-family:'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); display:block; margin-bottom: 6px; }
+  .modal input[type="password"]{ width: 100%; padding: 12px 14px; border: 2px solid var(--ink); border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #FBF8F0; color: var(--ink); margin-bottom: 14px; }
+  .modal .modal-actions{ display:flex; gap: 10px; justify-content: flex-end; margin-top: 6px; }
+  .modal .small-note{ font-size: 12px; opacity: 0.65; margin-top: -6px; margin-bottom: 16px; }
+
+  footer{
+    text-align:center; padding: 26px 20px 36px; font-size: 12px; opacity: 0.6;
+    font-family: 'JetBrains Mono', monospace; max-width: 700px; margin: 0 auto; line-height: 1.6;
+  }
+
+  @media (max-width: 600px){
+    .field-row{ flex-direction: column; }
+    .btn-primary{ width: 100%; }
+  }
+
+  /* ---------- v1.4 additions ---------- */
+  .version-tag{
+    font-family:'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); opacity: 0.4;
+    font-weight: 500; letter-spacing: 0.04em; margin-left: 4px;
+  }
+  .additive-panel{ margin-top: 30px; }
+  .additive-panel .sub{ margin-bottom: 16px; }
+  .batch-source{ font-size: 12px; opacity: 0.6; margin: 0 0 14px; font-style: italic; }
+
+  /* ---------- v1.5: loading animation ---------- */
+  .spinner{
+    display:inline-block; width:12px; height:12px; border:2px solid currentColor;
+    border-top-color:transparent; border-radius:50%; animation: spin 0.7s linear infinite;
+    vertical-align:-2px; margin-right:7px; opacity:0.9;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  .dots{ display:inline-flex; }
+  .dots span{ animation: dotPulse 1s ease-in-out infinite; opacity:0.25; }
+  .dots span:nth-child(2){ animation-delay:0.2s; }
+  .dots span:nth-child(3){ animation-delay:0.4s; }
+  @keyframes dotPulse{ 0%,100%{ opacity:0.25; } 50%{ opacity:1; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="byok-bar">
+    <span id="apiStatusText">Punslinger runs on your own Anthropic API key — you generate, you pay, nothing routes through us.</span>
+    <button id="openSettings">Set API key</button>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow">Print-on-demand wordplay engine<span class="version-tag">v1.14</span></div>
+    <h1 class="logo">Pun<span class="accent">slinger</span> 2000</h1>
+    <p class="tagline">Type a niche, set your category counts, generate puns across 11 categories — built for shirts, stickers, and mugs.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="setup-group">
+    <div class="niche-block">
+      <label for="nicheInput">Niche or topic</label>
+      <input id="nicheInput" type="text" placeholder="e.g. coffee, golf, cats, plumbers..." autocomplete="off">
+    </div>
+
+    <div class="panel" id="setupPanel">
+    <h2>Categories &amp; counts</h2>
+    <p class="sub">Set how many puns to generate per category (max 30 total).</p>
+    <div class="stepper-grid" id="stepperGrid"></div>
+    <div class="total-row">
+      <span class="total" id="totalCount">0 / 30 puns selected</span>
+    </div>
+    <div class="panel-actions">
+      <button class="btn btn-primary" id="generateBtn">
+        <span id="generateLabel">Generate puns</span>
+      </button>
+    </div>
+    </div>
+  </div>
+
+  <div id="statusArea"></div>
+  <div id="emptyState" class="empty-state">
+    <h2>The gallery's empty</h2>
+    <p>Enter a niche above, set your category counts, then hit "Generate puns."</p>
+  </div>
+  <div id="gallery"></div>
+
+  <div class="panel additive-panel" id="digDeeperSection" style="display:none;">
+    <h2>Dig deeper into this niche</h2>
+    <p class="sub">Pull specific jargon, premium gear, pain points, pride points, and real-life moments, then layer an extra themed batch on top of the results above.</p>
+    <button class="btn btn-primary" id="ddFetchBtn"><span id="ddFetchLabel">Find niche jargon &amp; pain points</span></button>
+    <div id="ddConceptsArea"></div>
+    <div id="ddBatchArea"></div>
+  </div>
+
+  <div class="panel additive-panel" id="occasionSection" style="display:none;">
+    <h2>Add an occasion batch</h2>
+    <p class="sub">Pick one or more gift occasions to layer an extra themed batch on top of the results above.</p>
+    <div class="kw-chips" id="occasionChips"></div>
+    <div class="kw-custom-row">
+      <input type="text" id="occasionCustomInput" placeholder="Add your own occasion...">
+      <button class="btn btn-ghost btn-sm" id="occasionCustomAdd">Add</button>
+    </div>
+    <div class="panel-actions">
+      <button class="btn btn-primary" id="occasionGenerateBtn"><span id="occasionGenerateLabel">Generate occasion batch</span></button>
+    </div>
+    <div id="occasionBatchArea"></div>
+  </div>
+
+  <div class="gallery-toolbar" id="galleryToolbar" style="display:none;">
+    <button class="btn btn-ghost btn-sm" id="exportTxt">Export all (.txt)</button>
+    <button class="btn btn-ghost btn-sm" id="exportCsv">Export all (.csv)</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="settingsModal" style="display:none;">
+  <div class="modal">
+    <h2>Your Anthropic API key</h2>
+    <p>Punslinger calls the Claude API directly from your browser using a key you provide. Nothing is sent to us — your key is stored only in this browser's local storage, and you're billed directly by Anthropic for what you generate.</p>
+    <p><strong>Don't have a key yet?</strong></p>
+    <ol>
+      <li>Go to <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> and sign up or log in.</li>
+      <li>Add billing credit (a few dollars covers a lot of runs).</li>
+      <li>Create an API key and paste it below.</li>
+    </ol>
+    <label for="apiKeyInput">API key</label>
+    <input type="password" id="apiKeyInput" placeholder="sk-ant-...">
+    <p class="small-note">This is a "bring your own key" tool: the cost of every run is yours, paid directly to Anthropic — not a subscription, not a markup.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelSettings">Cancel</button>
+      <button class="btn btn-primary" id="saveSettings" style="min-width:auto;">Save key</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Punslinger 2000 — puns generated by Claude using your own API key.<br>
+  Typical run (~25 puns) costs roughly $0.01–$0.02 in API usage. Regenerating an individual category costs a small additional fraction of a cent. Exact cost depends on current Anthropic pricing and isn't tracked by this tool.<br>
+  Generated puns are not checked against existing trademarks, copyrights, or registered slogans. Before listing any design commercially, verify it doesn't conflict with existing trademarks (e.g. via the USPTO database) — Punslinger doesn't do this for you.
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  const MAX_TOTAL = 30;
+  const ADDITIVE_BATCH_COUNT = 4;
+  const ADDITIVE_CATEGORY_IDS = ['homophonic','anthro','literal','wildcard','familiarTwist'];
+  const ADDITIVE_COUNT_OVERRIDES = { familiarTwist: 2 };
+  function additiveCountFor(id){ return ADDITIVE_COUNT_OVERRIDES[id] || ADDITIVE_BATCH_COUNT; }
+  const OCCASIONS_FIXED = ['Birthday','Christmas',"Mother's Day","Father's Day","Valentine's Day"];
+
+  const CATEGORIES = [
+    { id:'homophonic', num:1, name:'Homophonic', kind:'pun', def:'Words that sound identical but are spelled differently.', def_default:4 },
+    { id:'paronomastic', num:2, name:'Paronomastic', kind:'pun', def:'Words that sound close, but not exact — a slant-rhyme twist.', def_default:2 },
+    { id:'sylleptic', num:3, name:'Sylleptic', kind:'pun', def:'One word doing double duty across two unrelated phrases.', def_default:2 },
+    { id:'homographic', num:4, name:'Homographic', kind:'pun', def:'Same spelling, different (often unrelated) meanings.', def_default:2 },
+    { id:'recursive', num:5, name:'Recursive', kind:'pun', def:'A meta-pun — jokes about the act of pun-making itself.', def_default:2 },
+    { id:'polysemic', num:6, name:'Polysemic', kind:'pun', def:'One word, multiple meanings sharing a common root idea.', def_default:2 },
+    { id:'literal', num:7, name:'Literal Idioms', kind:'literal', def:'A common saying, taken literally and drawn that way.', def_default:2 },
+    { id:'anthro', num:8, name:'Anthropomorphic Characters', kind:'anthro', def:'A niche object comes alive and says something punny.', def_default:2 },
+    { id:'portmanteau', num:9, name:'Portmanteau', kind:'pun', def:'Two words blended into one brand-new word.', def_default:2 },
+    { id:'familiarTwist', num:10, name:'Familiar Twist', kind:'familiar', def:'A well-known idiom or saying, punned whole-cloth into something niche-specific.', def_default:4 },
+    { id:'wildcard', num:11, name:'Wildcard', kind:'wildcard', def:'Whatever clever angle fits best — no fixed mechanism.', def_default:4 }
+  ];
+
+  const $ = (sel) => document.querySelector(sel);
+  const els = {
+    nicheInput: $('#nicheInput'),
+    apiStatusText: $('#apiStatusText'),
+    openSettings: $('#openSettings'),
+    stepperGrid: $('#stepperGrid'),
+    totalCount: $('#totalCount'),
+    generateBtn: $('#generateBtn'),
+    generateLabel: $('#generateLabel'),
+    statusArea: $('#statusArea'),
+    emptyState: $('#emptyState'),
+    gallery: $('#gallery'),
+    galleryToolbar: $('#galleryToolbar'),
+    exportTxt: $('#exportTxt'),
+    exportCsv: $('#exportCsv'),
+    digDeeperSection: $('#digDeeperSection'),
+    ddFetchBtn: $('#ddFetchBtn'),
+    ddFetchLabel: $('#ddFetchLabel'),
+    ddConceptsArea: $('#ddConceptsArea'),
+    ddBatchArea: $('#ddBatchArea'),
+    occasionSection: $('#occasionSection'),
+    occasionChips: $('#occasionChips'),
+    occasionCustomInput: $('#occasionCustomInput'),
+    occasionCustomAdd: $('#occasionCustomAdd'),
+    occasionGenerateBtn: $('#occasionGenerateBtn'),
+    occasionGenerateLabel: $('#occasionGenerateLabel'),
+    occasionBatchArea: $('#occasionBatchArea'),
+    settingsModal: $('#settingsModal'),
+    cancelSettings: $('#cancelSettings'),
+    saveSettings: $('#saveSettings'),
+    apiKeyInput: $('#apiKeyInput')
+  };
+
+  let state = {
+    niche: '',
+    counts: {},
+    data: null,            // { character, categories: {id: [...]} } — original first run
+    loadingCategory: null, // category id currently regenerating in the original run
+
+    digDeeper: {
+      concepts: null,                 // { jargon:[], premiumGear:[], painPoints:[], pridePoints:[], realLifeMoments:[] }, up to 5 each
+      selectedConcepts: new Set(),    // keys like "jargon::espresso"
+      customConcepts: [],
+      loadingConcepts: false,
+      batch: null,                    // { categories:{...}, character, sourceLabel, forceKeywordList }
+      loadingBatch: false,
+      loadingBatchCategory: null
+    },
+
+    occasion: {
+      selectedOccasions: new Set(),
+      customOccasions: [],
+      batch: null,                    // { categories:{...}, character, sourceLabel, occasions }
+      loadingBatch: false,
+      loadingBatchCategory: null
+    }
+  };
+
+  CATEGORIES.forEach(c => { state.counts[c.id] = c.def_default; });
+
+  // ---------- localStorage ----------
+  function getApiKey(){ return localStorage.getItem('punslinger_api_key') || ''; }
+  function setApiKey(key){ localStorage.setItem('punslinger_api_key', key); }
+  function refreshApiStatus(){
+    els.apiStatusText.textContent = getApiKey()
+      ? 'API key set ✓ — Punslinger will bill generations to your own Anthropic account.'
+      : "Punslinger runs on your own Anthropic API key — you generate, you pay, nothing routes through us.";
+  }
+
+  function escapeHtml(str){
+    const d = document.createElement('div'); d.textContent = str == null ? '' : str; return d.innerHTML;
+  }
+
+  // Inline SVG used for the card copy button. Drawn as one tight, cohesive icon
+  // (overlapping rounded rectangles) so it reads clearly as a single "copy" affordance,
+  // rather than relying on a Unicode glyph that may render inconsistently across fonts.
+  const COPY_ICON_SVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="pointer-events:none;"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+
+  // ---------- API helpers ----------
+  async function callClaudeRaw(system, userMsg, maxTokens){
+    const key = getApiKey();
+    if(!key){ throw new Error('NO_KEY'); }
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: maxTokens,
+        system: system,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+    if(!resp.ok){
+      const errBody = await resp.text().catch(()=> '');
+      throw new Error('API_ERROR: ' + resp.status + ' ' + errBody.slice(0,200));
+    }
+    const data = await resp.json();
+    const textBlock = (data.content || []).find(b => b.type === 'text');
+    if(!textBlock){ throw new Error('NO_TEXT'); }
+    let cleaned = textBlock.text.trim().replace(/^```json/i,'').replace(/^```/,'').replace(/```$/,'').trim();
+    try{ return JSON.parse(cleaned); }
+    catch(e){ throw new Error('PARSE_ERROR'); }
+  }
+
+  // ---------- Steppers (initial run categories) ----------
+  function totalCount(){
+    return CATEGORIES.reduce((sum, c) => sum + (state.counts[c.id] || 0), 0);
+  }
+  function renderSteppers(){
+    els.stepperGrid.innerHTML = CATEGORIES.map(c => `
+      <div class="stepper-card">
+        <p class="name">${c.num}. ${c.name}</p>
+        <p class="def">${escapeHtml(c.def)}</p>
+        <div class="stepper-controls">
+          <button class="stepper-btn" data-step="${c.id}" data-dir="-1" aria-label="Decrease ${c.name} count">−</button>
+          <span class="stepper-count" id="count-${c.id}">${state.counts[c.id]}</span>
+          <button class="stepper-btn" data-step="${c.id}" data-dir="1" aria-label="Increase ${c.name} count">+</button>
+        </div>
+      </div>
+    `).join('');
+    els.stepperGrid.querySelectorAll('[data-step]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.step;
+        const dir = parseInt(btn.dataset.dir, 10);
+        const next = state.counts[id] + dir;
+        if(next < 0) return;
+        if(dir > 0 && totalCount() >= MAX_TOTAL) return;
+        state.counts[id] = next;
+        renderSteppers();
+      });
+    });
+    updateTotalRow();
+  }
+  function updateTotalRow(){
+    const t = totalCount();
+    els.totalCount.textContent = `${t} / ${MAX_TOTAL} puns selected`;
+    els.totalCount.classList.toggle('capped', t >= MAX_TOTAL);
+    els.stepperGrid.querySelectorAll('[data-dir="1"]').forEach(btn => { btn.disabled = t >= MAX_TOTAL; });
+  }
+
+  // ---------- Prompt building ----------
+  function buildToneSequence(count){
+    const seq = [];
+    for(let i = 0; i < count; i++){
+      const m = i % 3;
+      seq.push(m === 0 ? 'snarky' : (m === 1 ? 'doubleMeaning' : 'rivalry'));
+    }
+    return seq;
+  }
+
+  function buildKeywordBlock(keywordList){
+    if(keywordList.length === 0){
+      return `No specific keywords were selected — draw broadly on well-known aspects of the niche.`;
+    }
+    const customTerms = keywordList.filter(k => k.group === 'custom').map(k => k.term);
+    let block = `Focus on these selected aspects of the niche where natural:\n` +
+      keywordList.map(k => `- (${k.group}) ${k.term}`).join('\n');
+    if(customTerms.length){
+      block += `\n\nPriority keywords (typed in directly by the user): ${customTerms.join(', ')}. These should appear noticeably more often across the batch than the auto-suggested keywords above — treat them as the primary focus, not just one option among many.`;
+    }
+    block += keywordList.length <= 4
+      ? `\n\nThe selected keyword pool is narrow. Internally consider a couple of alternative angles per requested pun and output only the strongest, freshest option, so the batch doesn't feel repetitive despite the tight focus.`
+      : `\n\nVary which keywords you draw on across puns so the batch feels broad rather than fixated on one term.`;
+    block += `\n\nImportant: never sacrifice the actual wordplay mechanism just to force in a keyword. A clean, valid pun that only loosely connects to the niche beats a forced line that name-drops a keyword but isn't really a pun. If a category's required mechanism and a keyword connection are in tension, the mechanism wins.`;
+    return block;
+  }
+
+  function buildOccasionForceBlock(occasions){
+    if(!occasions || occasions.length === 0) return '';
+    return `Occasion requirement — this is a hard requirement, not optional flavor: every line in this batch must explicitly incorporate ${occasions.join(' and/or ')}. Use the single most obvious, stereotypical symbol of the occasion (e.g. Santa, a wrapped gift, a Christmas tree for Christmas; a cake, balloons, candles for Birthday; flowers, a card, a heart for Valentine's Day) — not a subtle or unusual angle. Obvious is correct here, overriding the general instinct elsewhere to avoid clichés. Before finalizing each line, confirm: does this line explicitly reference the occasion? If not, rewrite it before moving on.`;
+  }
+
+  function buildSelfCheckBlock(requestedIds, requested){
+    const lines = [];
+    if(requestedIds.some(id => ['homophonic','paronomastic','sylleptic','homographic','polysemic'].includes(id))){
+      lines.push(`For Homophonic, Paronomastic, Sylleptic, Homographic, and Polysemic: before finalizing a line, identify the exact word or phrase carrying the double meaning. If you cannot name one, rewrite the line until you can — never include a line where no single word is doing double duty.`);
+    }
+    if(requestedIds.includes('homophonic')){
+      lines.push(`Homophonic anti-pattern: avoid defaulting to the small stock of homophones that work for almost any topic regardless of niche (e.g. heir/air, reign/rein, write/right, reel/real, sole/soul). These are a fallback, not a first choice — before using one, check whether this niche's own vocabulary offers a more specific, less generic homophone pair. If a generic homophone is used, it must still satisfy the core check: name both words in the pair and confirm they are genuinely different in spelling but identical in sound. Whole/wholly/holy is banned outright as a Homophonic word pair — never use it, in any form, regardless of niche fit. A phrase like "wholly devoted" that uses one of these words correctly, with no actual second meaning active in the line, is not a pun and must be rewritten.`);
+    }
+    if(requestedIds.includes('sylleptic')){
+      lines.push(`Sylleptic anti-pattern: a list of parallel descriptive phrases (e.g. "Round, proud, and ready") is NOT sylleptic. Sylleptic requires ONE single word governing two grammatically parallel phrases, understood with a genuinely different meaning in each.`);
+      lines.push(`Sylleptic self-check — apply to every Sylleptic line after the first: (1) Have I already used the "lost/raised/held [abstract noun] and [literal noun]" frame earlier in this batch? If yes, this line must use a different syntactic frame (a question, a direct address to the reader, a single verb governing two objects via a different construction, etc.). (2) Is this line first-person or direct-address? If it reads as third-person narration ("she/he..."), rewrite it before finalizing — a sylleptic line should read like something the wearer is saying or wearing, not a sentence about someone else.`);
+    }
+    if(requestedIds.includes('homographic')){
+      lines.push(`Homographic anti-pattern: two true statements placed side by side (e.g. "Our hands are fast. Our competition is light.") do NOT qualify unless a single identically-spelled word is carrying two different meanings within the line. If this niche's own vocabulary doesn't offer a genuine double-meaning word, use a common, broadly recognizable homograph instead (e.g. "scale," "play," "note," "pitch," "flat," "sharp") and connect it to the niche through context — do not submit a flat statement or two side-by-side clauses as a substitute. A line that merely describes the niche metaphorically, with no single word carrying two distinct meanings, fails the same way — having a theme is not the same as having wordplay. A strong generic homograph beats a niche-specific line with no double meaning; a Homographic line with no double-meaning word at all is a failed line, not an acceptable fallback.`);
+    }
+    if(requestedIds.includes('portmanteau')){
+      lines.push(`Portmanteau: both source words must remain clearly recognizable in the blended word. If a reader can't identify both halves, rewrite it.`);
+    }
+    if(requestedIds.includes('wildcard')){
+      lines.push(`Wildcard: the "technique" field must be exactly one of: Homophonic, Paronomastic, Sylleptic, Homographic, Recursive, Polysemic, Portmanteau — never invent a new technique label, and never use "Literal Idiom" or "Anthropomorphic" (those require a visual or character format that the Wildcard schema doesn't carry, so they can't be genuinely satisfied here). The line must still be genuine wordplay using one of these 7 mechanisms, not just a clever observation. Before finalizing a Wildcard line, re-check the chosen technique against its strict definition (the same definitions used for the dedicated categories) — not just whether the label sounds plausible. Homophonic requires two differently-spelled words that sound identical; if the pun-word is spelled the same both times, it is Homographic or Polysemic, never Homophonic. Sylleptic requires one word or verb governing two grammatically parallel phrases with genuinely different meanings in each; two separate clauses joined by "and" that each make their own point is not Sylleptic. If the line doesn't satisfy the technique you're about to label it with, either fix the line or relabel it — never label it to match the line if the mechanism isn't actually present. Before labeling the technique, name the specific word doing the work. A shared theme, color, or visual coincidence between two things is not wordplay and does not qualify for any technique label.`);
+      lines.push(`Wildcard slogan-template cap: at most 1 line per batch may be built on a recognizable fill-in-the-blank slogan formula (set "templateUsed" accordingly on that one line, null on all others). Once a specific formula has been used for this niche in this session, it is permanently off-limits for the rest of the session, including on regenerate — never reuse it even with a different word filled in.`);
+    }
+    if(requestedIds.includes('anthro')){
+      lines.push(`Anthropomorphic self-check: (1) Does this line contain "I/me/my/mine"? If not, rewrite it as something the character would actually say aloud, not a statement about the character — UNLESS the tone is "doubleMeaning," in which case a pronoun-free caption is correct and expected, not an error. (2) Where it fits naturally, have the character speak directly to a listener using "you/your" — addressing the rival, the wearer, or an implied audience — rather than only describing itself in isolation. Speaking at someone is what makes a line read as dialogue instead of a title.`);
+      lines.push(`Anthropomorphic sentence-shape limit: at most 1 line in this entire batch may use the two-part em-dash structure (a clause, an em-dash, then a second clause — e.g. "I bring the heat — and the smoke."). This applies no matter the batch size, including a 2-line batch. Every other line must be a single, uninterrupted sentence with no em-dash. Vary sentence shape: a flat declarative line, a question, a short command, a comparison without an em-dash — don't default to the dash-and-punchline pattern repeatedly.`);
+    }
+    if(requestedIds.includes('familiarTwist')){
+      lines.push(`Familiar Twist source-phrase safety test: before using any idiom, proverb, or common expression as your source, ask "Can I name a single author, performer, film, show, song, or brand this phrase originates from or is primarily associated with?" If yes, it is disqualified — pick a different source phrase. If you genuinely cannot attribute it to one creator or work, and it has been in common, broad use for at least a generation, it is fair game. Examples that pass: "The early bird catches the worm," "Actions speak louder than words," "When it rains, it pours." Examples that fail: "Don't Stop Believin'" (Journey song), "I'll be back" (Terminator), "May the odds be ever in your favor" (Hunger Games).`);
+      lines.push(`Familiar Twist transformation requirement: at least 2 of every 3 lines in this category must show a genuine sound-based or spelling-based change from the source phrase (set "transformed": true) — not just sit there unmodified because it happens to already double as niche jargon. At most 1 of every 3 lines may be left unmodified (set "transformed": false) because the source phrase's own wording already contains a real niche term (e.g. "A stitch in time saves nine" for knitting, where "stitch" is already literal). Never submit more than that ratio of unmodified lines.`);
+      lines.push(`Familiar Twist near-miss to avoid: swapping in a niche noun for the idiom's original noun without any sound-alike or spelling-alike change is NOT wordplay — it's a thematic substitution wearing a pun's clothing (e.g. "An apple a day keeps the doctor away" becoming "A taco a day keeps the blues away" — neither swap is sound-based, so it fails). Every transformed line must have a real word doing double duty via one of the named technique mechanisms — name the word before finalizing the line.`);
+      lines.push(`Familiar Twist anti-padding rule: never take an idiom and leave it essentially word-for-word intact while just bolting an extra clause, tagline, or punchline onto the end (e.g. "Bite off more than you can chew — said no shark ever," or "When It Rains, It Pours Blessings on My Garden"). That is not a transformation — it's the unmodified idiom plus filler. If a line is going to count as "transformed": true, the idiom's own internal wording must change — actual words inside the phrase get reworked into the pun — not padded with extra words appended onto an otherwise-untouched original. Keep lines tight: no padding just to hit a length target. Known trap: "All that glitters is not gold" resists clean internal rewording, and the lazy fallback is to leave it completely untouched and bolt an explanatory clause after it (e.g. "...sometimes it's creamy" or "...but platinum crucibles pass every test") — both are anti-padding violations. If you cannot genuinely rework this idiom's own internal wording into the pun, choose a different source phrase instead of padding this one.`);
+      lines.push(`Familiar Twist known crutch phrase: "The early bird catches the worm" has been reached for as a default in many niches regardless of fit. It may be used at most once per batch, the same as any other source idiom — but treat it as a last resort, not a first instinct. Actively look for a source phrase with a more specific, less automatic connection to this niche before reaching for it.`);
+      lines.push(`Familiar Twist uniqueness: never use the same source idiom/phrase more than once within this batch.`);
+    }
+    if(lines.length === 0) return '';
+    return `Quality self-check — apply before finalizing any line:\n` + lines.map(l => '- ' + l).join('\n');
+  }
+
+  function buildExclusionBlock(exclusionData){
+    const lines = (exclusionData && exclusionData.lines) || [];
+    const props = (exclusionData && exclusionData.props) || [];
+    const idioms = (exclusionData && exclusionData.idioms) || [];
+    const templates = (exclusionData && exclusionData.templates) || [];
+    if(lines.length === 0 && props.length === 0 && idioms.length === 0 && templates.length === 0) return '';
+    let block = '';
+    if(lines.length > 0){
+      block += `Lines already used for this niche in a previous batch — do not reuse any of them verbatim, and do not reuse the same underlying joke with different wording. This includes: reusing the same sentence template with one word swapped (e.g. "I bring the family together" reused for two different occasions), and re-staging the same visual gag with cosmetic changes (e.g. the same "carrying a briefcase through the door" image relocated to a different room). If a new line's structure or staged scene closely mirrors a prior one, invent a genuinely different angle rather than reskinning the old one.\n` + lines.map(l => '- ' + l).join('\n');
+    }
+    if(props.length > 0){
+      const uniqueProps = Array.from(new Set(props.map(p => p.toLowerCase()))).slice(0, 30);
+      block += `\n\nPhysical props/objects already featured in this niche's Literal Idioms visuals — do not restage any of these same objects in a new visual, even with a different idiom or setting:\n` + uniqueProps.map(p => '- ' + p).join('\n');
+    }
+    if(idioms.length > 0){
+      const uniqueIdioms = Array.from(new Set(idioms.map(i => i.toLowerCase()))).slice(0, 40);
+      block += `\n\nSource idioms/sayings already used for "Familiar Twist" earlier in this session for this niche — these are permanently off-limits, do not reuse any of them under any technique, even with a different pun:\n` + uniqueIdioms.map(i => '- ' + i).join('\n');
+    }
+    if(templates.length > 0){
+      const uniqueTemplates = Array.from(new Set(templates.map(t => t.toLowerCase()))).slice(0, 20);
+      block += `\n\nFill-in-the-blank slogan formulas already used for "Wildcard" earlier in this session for this niche — these are permanently off-limits for the rest of this session, do not reuse any of them even with a different word in the blank:\n` + uniqueTemplates.map(t => '- ' + t).join('\n');
+    }
+    return block;
+  }
+
+  function buildSystemPrompt(requested, keywordList, giftOccasions, forceGiftMode, exclusionLines){
+    const requestedIds = requested.map(r => r.cat.id);
+    const formatRules = `Format rules — apply to every category:
+- Output must be short and legible on a t-shirt, sticker, or mug (roughly 2-8 words for plain puns; dialogue lines under ~12 words; Familiar Twist lines may run 2-10 words, since reworking a whole known phrase has less room to compress than a one-liner built from scratch).
+- Never use a riddle structure or a question-then-answer / setup-then-punchline format. Every pun must read as a single standalone line.
+- Tone: lighthearted, clever, PG-13 maximum.
+- Never repeat the same underlying pun, idiom, or stock phrase across categories in this batch — including using it as a bare title in one category and recycling it inside a longer line in another. For example, if "On a Roll" titles a Literal Idioms item, the phrase "on a roll" must not also reappear inside a Wildcard or any other category's line in the same batch, even if the surrounding wording is different.
+- Do not use a real ethnicity, nationality, or demographic group's name as a stand-in label, stereotype, or caricature for a person or character (e.g. do not use "Guido" as Italian-coded shorthand for a character). This does NOT apply to: (1) ordinary color/material words used in their plain physical sense ("black coffee," "white wine," "brown sugar"); (2) nationality- or culture-derived terms used as their normal recognized product/culinary/style name ("French press," "Dutch oven," "Turkish delight," "Hawaiian shirt," "German shepherd"); or (3) a country/place name that happens to be spelled identically to an unrelated common noun ("turkey" the bird, "chili" the pepper, "china" the dishware) — these are legitimate homograph/homophone pairs with no reference to people. The distinction throughout is whether the term is naming a thing/style/coincidental spelling versus labeling a person.`;
+
+    const selfCheck = buildSelfCheckBlock(requestedIds, requested);
+    const keywordBlock = buildKeywordBlock(keywordList || []);
+    const giftBlock = forceGiftMode ? buildOccasionForceBlock(giftOccasions) : '';
+    const exclusionBlock = buildExclusionBlock(exclusionLines);
+
+    let categoryDefs = `Category definitions and JSON shapes for the categories requested below:\n`;
+    let schemaLines = [];
+
+    requested.forEach(({ cat, count }) => {
+      if(cat.kind === 'pun' && cat.id === 'polysemic'){
+        categoryDefs += `- ${cat.name}: A standalone caption where one word or short phrase has two closely related senses that are BOTH genuinely true at once — one sense true of the niche object/subject itself, the other true of a person (the wearer) — without the line favoring either reading. The ambiguity is the point; never resolve it with a clarifying word that tips the line toward being clearly about the object or clearly about the person. The figurative sense should generally land as a positive or at least neutral-clever trait — unlike Anthropomorphic's Double Meaning tone, a neutral-but-clever dual reading is fully acceptable here if forcing positivity would weaken the line; this category does not require warmth. These are standalone product captions, not character dialogue — no first-person pronoun is required or expected; short pronoun-free phrasing (e.g. "Still Standing, Still Listening") is correct and expected, not a mistake to fix. Same root-meaning requirement as always: do not use unrelated meanings of an identically-spelled word; that is Homographic, a different category. Fallback: if a genuine wearer/niche dual-meaning isn't achievable for this niche on a given line, classic Polysemic (one word, two related senses, not necessarily a person-vs-object reading, e.g. "head" of a person vs. "head" of a company) is an acceptable fallback rather than forcing a weak or strained dual-meaning line.\n`;
+        schemaLines.push(`  "${cat.id}": [ ${count} items, each { "text": string } ]`);
+      } else if(cat.kind === 'pun'){
+        const distinctionNote = {
+          homophonic: ' Exact sound match only — words that sound identical (Homophonic). Do not use near-rhymes; that is Paronomastic, a different category.',
+          paronomastic: ' Approximate/slant sound match, NOT identical — phonetic distortion (Paronomastic). Do not use exact sound-alikes; that is Homophonic.',
+          homographic: ' Same spelling, but the meanings can be unrelated in origin (Homographic).'
+        }[cat.id] || '';
+        categoryDefs += `- ${cat.name}: ${cat.def}${distinctionNote}\n`;
+        schemaLines.push(`  "${cat.id}": [ ${count} items, each { "text": string } ]`);
+      } else if(cat.kind === 'literal'){
+        categoryDefs += `- ${cat.name}: ${cat.def} Provide short on-product text plus a one-sentence "visual" describing the literal image. Avoid defaulting to the small stock of idioms that get reached for regardless of niche because they're easy to literalize for almost anything round, jarred, or food-shaped (e.g. "On a Roll," "In a Pickle," "Spilling the Beans," "Cool as a Cucumber"). These are a fallback, not a first choice — check whether this niche's own vocabulary offers a more specific idiom or literal image before reaching for one of these. Also output "propTags": an array of 1-3 short noun phrases naming the specific physical objects/props featured in the visual (e.g. ["roller skates","breakfast tray"]). This field is internal only and never shown to the end user — it exists purely to track which props have already been used so future batches for this niche avoid restaging the same objects.\n`;
+        schemaLines.push(`  "${cat.id}": [ ${count} items, each { "text": string, "visual": string, "propTags": array of 1-3 short strings naming the key physical props in the visual } ]`);
+      } else if(cat.kind === 'wildcard'){
+        categoryDefs += `- ${cat.name}: ${cat.def} Pick whichever of the 7 named pun mechanisms fits the niche best per item; label which one you used. The line must be genuine wordplay, not just a witty observation. Also output "wordPair": the two specific words or phrases that are actually doing the double duty for the chosen technique (e.g. for Homophonic, the two same-sounding words; for Portmanteau, the two source words blended; for Sylleptic, the single governing word/verb plus the two parallel objects it governs). This field is internal only and is never shown to the end user — but it must name something real and specific; if you cannot name a genuine word pair, the line/technique combination is invalid and must be fixed before output. A recognizable fill-in-the-blank slogan formula (e.g. "Born to ___, Forced to Work," "World's Okayest ___," "___ is my therapy") is acceptable raw material for a Wildcard line as long as the blank itself is filled with genuine wordplay satisfying the chosen technique — but use at most 1 such template-based line per batch; if you use one, set "templateUsed" to the formula's generic boilerplate form (e.g. "Born to ___, Forced to Work"), otherwise set it to null. This field is internal only and never shown to the end user.\n`;
+        schemaLines.push(`  "${cat.id}": [ ${count} items, each { "text": string, "technique": string (one of the 7 named mechanisms), "wordPair": string (internal-only, names the specific words doing the work), "templateUsed": string or null (internal-only, the generic slogan formula if one was used) } ]`);
+      } else if(cat.kind === 'anthro'){
+        const toneSeq = buildToneSequence(count);
+        const toneList = toneSeq.map((t,i) => `item ${i+1} = ${t}`).join(', ');
+        categoryDefs += `- ${cat.name}: Invent ONE recurring niche-specific character. The character must literally BE the niche item or subject itself, anthropomorphized — not a separate invented mascot, sidekick, or adjacent symbol. Picture it as a cartoon version of the niche thing itself with a face and a personality, delivering the line. Give it a name, one-sentence visual anchor, short personality. Every item is that character speaking one line of dialogue in a speech bubble, and the line must itself be a genuine pun (any mechanism). Every dialogue line must contain a first-person pronoun (I/me/my/mine) — it should read as something the character is actually saying out loud about itself, not a slogan or caption describing it from outside — EXCEPT Double Meaning lines, which are exempt from this requirement (see below). Where it fits naturally, have the character speak directly to a listener using "you/your" (the rival, the wearer, or an implied audience) rather than only describing itself in isolation — speaking at someone is what makes a line read as dialogue instead of a title. Tone rotates by slot: ${toneList}. "snarky" = sarcastic one-liner from the character. "doubleMeaning" = a short caption or line containing one word/phrase whose literal sense (true of the niche object/character itself) and figurative sense (true of a person — stamina, character, dedication, warmth) are BOTH genuinely true at once, without the line favoring either reading. The ambiguity itself is the entire point — never resolve it by adding a clarifying word that tips the line toward "this is about you" or "this is about me." The figurative sense must land as a positive trait (resilience, warmth, dedication, growth, strength) — never backhanded or negative. Default to Polysemic (one word, two closely related senses) — this is the only mechanism reliable enough to sustain genuine ambiguity; Homographic is acceptable only when both senses are still clearly positive and the line doesn't read as a non-sequitur. Avoid Homophonic, Paronomastic, or Sylleptic for this tone — sound-based swaps tend to force the line to favor one reading over the other, breaking the ambiguity. Double Meaning lines are often short captions WITHOUT a first-person pronoun (e.g. "Still Standing, Still Listening," "Balanced, Even Under Pressure") — that pronoun-free, caption-like phrasing is correct and expected for this tone, not a mistake to fix. For niches that are a discrete physical object (e.g. corn dog, peanut butter jar, camera, monster truck), split the dual reading between the object's literal trait and the wearer's personal trait — this is the strongest, clearest version of the ambiguity. For niches that are a role, profession, or activity rather than a discrete object (e.g. principal, nurse, chemist, runner), the object/wearer split is structurally weaker since the character already IS a person — for these niches, instead split the reading between the role as professionally practiced (the literal, on-the-job sense) and the same trait read as a personal/character quality that extends beyond the job, giving two genuinely separate planes (professional vs. personal) rather than forcing a thin object/person split that doesn't really exist for a role-based niche. "rivalry" = a SECOND, lower-status rival character (within or adjacent to the niche) appears in the same scene; the main character's line should voice an invented, plausible niche-relevant flex as a put-down or aimed at the rival — NOT a riddle, just a remark one character makes to the other.\n`;
+        schemaLines.push(`  "character": { "name": string, "visualAnchor": string, "personality": string },\n  "${cat.id}": [ ${count} items, each { "tone": "snarky"|"doubleMeaning"|"rivalry", "dialogue": string, "rival": string or null (only for rivalry items), "prideAnchor": string or null (only for rivalry items) } ]`);
+      } else if(cat.kind === 'familiar'){
+        categoryDefs += `- ${cat.name}: ${cat.def} Take a well-known idiom, proverb, or common expression and rework it whole-cloth so it lands as a niche-specific pun — not a generic POD template with a niche noun dropped in a blank, but the entire phrase reworked around a genuine wordplay mechanism. Pick whichever named technique (Homophonic, Paronomastic, Homographic, Polysemic, or Portmanteau) fits the source phrase and niche best; label which one you used. Also output "sourcePhrase": the well-known idiom/saying this line is based on, in its original common form (e.g. "Practice makes perfect"). This field is internal only and never shown to the end user, but it must name a real, broadly recognizable phrase — it's also the anchor for the source-phrase safety test below. Also output "transformed": true if the line shows a genuine sound-based or spelling-based change from the source phrase, or false if the line is the source phrase essentially unmodified because it already contains a literal niche term.\n`;
+        schemaLines.push(`  "${cat.id}": [ ${count} items, each { "text": string, "sourcePhrase": string (internal-only, the idiom/saying being punned), "technique": string (one of: Homophonic, Paronomastic, Homographic, Polysemic, Portmanteau), "transformed": boolean } ]`);
+      }
+    });
+
+    return `You are Punslinger 2000, a linguistic engine generating witty, commercially viable, grammatically distinct puns for Print-on-Demand creators.
+
+${formatRules}
+
+${selfCheck}
+
+${keywordBlock}
+${giftBlock}
+
+${exclusionBlock}
+
+${categoryDefs}
+Respond with ONLY raw JSON, no markdown fences, no commentary, matching exactly this shape:
+{
+${schemaLines.join(',\n')}
+}`;
+  }
+
+  // ---------- Generation: original run ----------
+  async function generatePuns(){
+    const niche = els.nicheInput.value.trim();
+    if(!niche){ setStatus('Type a niche first — e.g. "coffee" or "golf".', true); return; }
+    if(!getApiKey()){ openSettingsModal(); return; }
+    state.niche = niche;
+
+    const requested = CATEGORIES
+      .filter(c => state.counts[c.id] > 0)
+      .map(c => ({ cat: c, count: state.counts[c.id] }));
+    if(requested.length === 0){ setStatus('Set at least one category count above 0.', true); return; }
+
+    els.generateBtn.disabled = true;
+    els.generateLabel.innerHTML = loadingHtml('Generating');
+    setStatus('Generating ' + totalCount() + ' puns across ' + requested.length + ' categories…');
+    els.emptyState.style.display = 'none';
+    els.gallery.innerHTML = '';
+    els.galleryToolbar.style.display = 'none';
+    els.digDeeperSection.style.display = 'none';
+    els.occasionSection.style.display = 'none';
+
+    // reset additive state and prior-niche data on a fresh generation
+    state.data = null;
+    state.digDeeper = { concepts: null, selectedConcepts: new Set(), customConcepts: [], loadingConcepts: false, batch: null, loadingBatch: false, loadingBatchCategory: null };
+    state.occasion = { selectedOccasions: new Set(), customOccasions: [], batch: null, loadingBatch: false, loadingBatchCategory: null };
+
+    try{
+      const requestedIds = requested.map(r => r.cat.id);
+      const exclusionData = (requestedIds.includes('familiarTwist') || requestedIds.includes('wildcard'))
+        ? gatherExclusionData()
+        : undefined;
+      const system = buildSystemPrompt(requested, [], [], false, exclusionData);
+      const userMsg = `Niche: ${state.niche}`;
+      const result = await callClaudeRaw(system, userMsg, 4000);
+      state.data = { character: result.character || null, categories: result };
+      setStatus('');
+      renderGallery();
+      els.galleryToolbar.style.display = '';
+      els.digDeeperSection.style.display = '';
+      els.occasionSection.style.display = '';
+      renderDigDeeperPanel();
+      renderOccasionPanel();
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      els.generateBtn.disabled = false;
+      els.generateLabel.textContent = 'Generate puns';
+    }
+  }
+
+  async function regenerateCategory(categoryId){
+    if(!state.niche || !state.data) return;
+    const cat = CATEGORIES.find(c => c.id === categoryId);
+    const count = state.counts[categoryId];
+    if(!count){ return; }
+    state.loadingCategory = categoryId;
+    renderGallery();
+
+    try{
+      const exclusionData = (categoryId === 'familiarTwist' || categoryId === 'wildcard') ? gatherExclusionData() : undefined;
+      const system = buildSystemPrompt([{ cat, count }], [], [], false, exclusionData);
+      const userMsg = `Niche: ${state.niche}`;
+      const partial = await callClaudeRaw(system, userMsg, 1800);
+      state.data.categories[categoryId] = partial[categoryId];
+      if(cat.kind === 'anthro' && partial.character){
+        state.data.character = partial.character;
+      }
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      state.loadingCategory = null;
+      renderGallery();
+    }
+  }
+
+  function handleApiError(err){
+    const msg = String(err && err.message || err);
+    if(msg === 'NO_KEY'){ setStatus('Add an Anthropic API key to start generating.', true); openSettingsModal(); }
+    else if(msg.startsWith('API_ERROR')){ setStatus('The API call failed (' + msg.replace('API_ERROR: ','') + '). Check your key and try again.', true); }
+    else if(msg === 'PARSE_ERROR'){ setStatus('Got a response back, but couldn\'t parse it as JSON. Try again.', true); }
+    else { setStatus('Something went wrong: ' + msg, true); }
+  }
+
+  function loadingHtml(label){
+    return `<span class="spinner" aria-hidden="true"></span>${escapeHtml(label)}<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span>`;
+  }
+
+  function setStatus(msg, isError){
+    if(!msg){ els.statusArea.innerHTML = ''; return; }
+    if(isError){
+      els.statusArea.innerHTML = `<div class="status error">${escapeHtml(msg)}</div>`;
+      if(typeof els.statusArea.scrollIntoView === 'function'){
+        els.statusArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    const base = msg.replace(/[.\u2026]+$/, '');
+    els.statusArea.innerHTML = `<div class="status">${escapeHtml(base)}<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></div>`;
+  }
+
+  // ---------- Rendering: original gallery ----------
+  function renderGallery(){
+    if(!state.data){ els.emptyState.style.display = ''; els.gallery.innerHTML = ''; return; }
+    els.emptyState.style.display = 'none';
+
+    const cats = CATEGORIES.filter(c => state.counts[c.id] > 0);
+
+    els.gallery.innerHTML = cats.map(cat => {
+      const items = (state.data.categories[cat.id] || []);
+      const isLoading = state.loadingCategory === cat.id;
+      let bodyHtml;
+      if(isLoading){
+        bodyHtml = '<div class="status">Regenerating this category<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></div>';
+      } else {
+        const charBox = (cat.kind === 'anthro' && state.data.character) ? renderCharacterBox(state.data.character) : '';
+        bodyHtml = charBox + `<div class="card-grid">${items.map((item, idx) => renderCard(cat, item, idx)).join('')}</div>`;
+      }
+      return `
+        <div class="category-block">
+          <div class="category-head">
+            <span class="num">0${cat.num}</span>
+            <h3>${cat.name}</h3>
+            <button class="regen-btn" data-regen="${cat.id}" ${isLoading ? 'disabled' : ''}>${isLoading ? loadingHtml('Regenerating') : '↻ Regenerate'}</button>
+          </div>
+          <p class="category-def">${escapeHtml(cat.def)}</p>
+          ${bodyHtml}
+        </div>`;
+    }).join('');
+
+    els.gallery.querySelectorAll('[data-regen]').forEach(btn => btn.addEventListener('click', () => regenerateCategory(btn.dataset.regen)));
+    els.gallery.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', () => copyCard(btn)));
+  }
+
+  function gatherExclusionData(){
+    const lines = [];
+    const props = [];
+    const idioms = [];
+    const templates = [];
+    const knownIds = CATEGORIES.map(c => c.id);
+    function pull(categories){
+      knownIds.forEach(id => {
+        const val = categories && categories[id];
+        if(!Array.isArray(val)) return;
+        val.forEach(item => {
+          if(item.text) lines.push(item.text);
+          if(item.dialogue) lines.push(item.dialogue);
+          if(Array.isArray(item.propTags)) item.propTags.forEach(p => { if(p) props.push(p); });
+          if(item.sourcePhrase) idioms.push(item.sourcePhrase);
+          if(item.templateUsed) templates.push(item.templateUsed);
+        });
+      });
+    }
+    if(state.data) pull(state.data.categories);
+    if(state.digDeeper.batch) pull(state.digDeeper.batch.categories);
+    if(state.occasion.batch) pull(state.occasion.batch.categories);
+    return { lines, props, idioms, templates };
+  }
+
+  // ================= DIG DEEPER (niche concepts, additive) =================
+
+  async function fetchNicheConcepts(){
+    if(!state.niche){ return; }
+    if(!getApiKey()){ openSettingsModal(); return; }
+    state.digDeeper.loadingConcepts = true;
+    els.ddFetchBtn.disabled = true;
+    els.ddFetchLabel.innerHTML = loadingHtml('Digging');
+    setStatus('Pulling jargon, premium gear, pain points, pride points, and real-life moments for "' + state.niche + '"…');
+
+    const system = `You generate niche-concept research for a Print-on-Demand pun tool. Given a niche, return ONLY raw JSON, no markdown fences, no commentary, with this exact shape:
+{
+  "jargon": [ exactly 5 insider shorthand terms or short phrases for the ACT of doing this niche's core activity — verbs/slang an outsider wouldn't recognize, not physical objects ],
+  "premiumGear": [ exactly 5 top-tier physical objects, materials, or equipment within this niche — the best-in-class, most coveted, gold-standard version of something tangible. Describe the item or material generically (e.g. "cast iron skillet," "offset smoker," "brisket point") — never an actual brand name, company name, or trademarked product name, even if it's the obvious top pick in that niche. ],
+  "painPoints": [ exactly 5 common frustrations, annoyances, or shared enemies associated with this niche ],
+  "pridePoints": [ exactly 5 things people in this niche are proud of, smug about, or use to signal identity ],
+  "realLifeMoments": [ exactly 5 concrete everyday moments or specific physical locales/settings where this niche naturally comes up ]
+}
+Each array must contain EXACTLY 5 items — not 4, not 6. Keep every entry short (1-4 words), concrete, and specific to the niche — avoid generic filler that could apply to any topic. Output strictly the short punchy term itself — never append a colon-and-explanation or definition (e.g. output "August Asphalt", never "August Asphalt: the 104-degree parking lot surface that melts your shoes").`;
+    const userMsg = `Niche: ${state.niche}`;
+
+    try{
+      const result = await callClaudeRaw(system, userMsg, 800);
+      const clamp5 = (arr) => (arr || []).slice(0, 5);
+      state.digDeeper.concepts = {
+        jargon: clamp5(result.jargon),
+        premiumGear: clamp5(result.premiumGear),
+        painPoints: clamp5(result.painPoints),
+        pridePoints: clamp5(result.pridePoints),
+        realLifeMoments: clamp5(result.realLifeMoments)
+      };
+      state.digDeeper.selectedConcepts = new Set();
+      Object.keys(state.digDeeper.concepts).forEach(group => {
+        const items = state.digDeeper.concepts[group];
+        if(items && items.length){ state.digDeeper.selectedConcepts.add(group + '::' + items[0]); }
+      });
+      state.digDeeper.customConcepts = [];
+      setStatus('');
+      renderDigDeeperPanel();
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      state.digDeeper.loadingConcepts = false;
+      els.ddFetchBtn.disabled = false;
+      els.ddFetchLabel.textContent = 'Find niche jargon & pain points';
+    }
+  }
+
+  function selectedConceptList(){
+    const list = [];
+    state.digDeeper.selectedConcepts.forEach(key => {
+      const idx = key.indexOf('::');
+      list.push({ group: key.slice(0, idx), term: key.slice(idx + 2) });
+    });
+    return list;
+  }
+
+  function renderConceptChips(){
+    if(!state.digDeeper.concepts){ els.ddConceptsArea.innerHTML = ''; return; }
+    const groupLabels = { jargon:'Jargon / insider terms', premiumGear:'Premium gear', painPoints:'Pain points', pridePoints:'Pride points', realLifeMoments:'Real-life moments' };
+    let html = `<p class="sub" style="margin-top:14px;">Tap any chip to select it for this batch — tap again to remove it. One per section is selected to start.</p>`;
+    Object.keys(groupLabels).forEach(group => {
+      const items = state.digDeeper.concepts[group] || [];
+      if(items.length === 0) return;
+      html += `<div class="kw-group"><span class="kw-group-label">${groupLabels[group]}</span><div class="kw-chips">`;
+      items.forEach(term => {
+        const key = group + '::' + term;
+        const selected = state.digDeeper.selectedConcepts.has(key);
+        const label = (selected ? '✓ ' : '') + term;
+        html += `<button class="kw-chip ${selected?'selected':''}" data-ddkey="${escapeHtml(key)}">${escapeHtml(label)}</button>`;
+      });
+      html += `</div></div>`;
+    });
+    if(state.digDeeper.customConcepts.length){
+      html += `<div class="kw-group"><span class="kw-group-label">Your own</span><div class="kw-chips">`;
+      state.digDeeper.customConcepts.forEach(term => {
+        const key = 'custom::' + term;
+        const selected = state.digDeeper.selectedConcepts.has(key);
+        const label = (selected ? '✓ ' : '') + '★ ' + term;
+        html += `<button class="kw-chip custom ${selected?'selected':''}" data-ddkey="${escapeHtml(key)}">${escapeHtml(label)}</button>`;
+      });
+      html += `</div></div>`;
+    }
+    html += `<div class="kw-custom-row">
+      <input type="text" id="ddCustomInput" placeholder="Add your own concept...">
+      <button class="btn btn-ghost btn-sm" id="ddCustomAdd">Add</button>
+    </div>
+    <div class="panel-actions">
+      <button class="btn btn-primary" id="ddGenerateBtn"><span id="ddGenerateLabel">Generate niche-deep-dive batch</span></button>
+    </div>`;
+    els.ddConceptsArea.innerHTML = html;
+
+    els.ddConceptsArea.querySelectorAll('.kw-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.ddkey;
+        if(state.digDeeper.selectedConcepts.has(key)) state.digDeeper.selectedConcepts.delete(key);
+        else state.digDeeper.selectedConcepts.add(key);
+        renderConceptChips();
+      });
+    });
+    const ddCustomAdd = $('#ddCustomAdd');
+    const ddCustomInputEl = $('#ddCustomInput');
+    ddCustomAdd.addEventListener('click', addDdCustom);
+    ddCustomInputEl.addEventListener('keydown', (e) => { if(e.key === 'Enter') addDdCustom(); });
+    const ddGenerateBtn = $('#ddGenerateBtn');
+    ddGenerateBtn.addEventListener('click', generateDigDeeperBatch);
+  }
+
+  function addDdCustom(){
+    const input = $('#ddCustomInput');
+    if(!input) return;
+    const val = input.value.trim();
+    if(!val) return;
+    state.digDeeper.customConcepts.push(val);
+    state.digDeeper.selectedConcepts.add('custom::' + val);
+    input.value = '';
+    renderConceptChips();
+  }
+
+  async function generateDigDeeperBatch(){
+    if(!state.niche) return;
+    if(!getApiKey()){ openSettingsModal(); return; }
+    if(state.digDeeper.selectedConcepts.size === 0){
+      const input = $('#ddCustomInput');
+      const pendingText = input ? input.value.trim() : '';
+      if(pendingText){ addDdCustom(); }
+    }
+    const conceptList = selectedConceptList();
+    const requested4 = ADDITIVE_CATEGORY_IDS.map(id => ({ cat: CATEGORIES.find(c => c.id === id), count: additiveCountFor(id) }));
+    const ddGenerateLabel = $('#ddGenerateLabel');
+    if(ddGenerateBtn){ ddGenerateBtn.disabled = true; }
+    if(ddGenerateLabel){ ddGenerateLabel.innerHTML = loadingHtml('Generating'); }
+    setStatus('Generating niche-deep-dive batch…');
+
+    try{
+      const system = buildSystemPrompt(requested4, conceptList, [], false, gatherExclusionData());
+      const userMsg = `Niche: ${state.niche}`;
+      const result = await callClaudeRaw(system, userMsg, 2200);
+      const categories = {};
+      ADDITIVE_CATEGORY_IDS.forEach(id => { categories[id] = result[id] || []; });
+      state.digDeeper.batch = {
+        categories,
+        character: result.character || null,
+        sourceLabel: conceptList.length ? conceptList.map(k => k.term).join(', ') : '(no concepts selected — broad)',
+        forceKeywordList: conceptList
+      };
+      setStatus('');
+      renderDigDeeperPanel();
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      const btn2 = $('#ddGenerateBtn');
+      const label2 = $('#ddGenerateLabel');
+      if(btn2){ btn2.disabled = false; }
+      if(label2){ label2.textContent = 'Generate niche-deep-dive batch'; }
+    }
+  }
+
+  async function regenerateDigDeeperCategory(categoryId){
+    if(!state.digDeeper.batch) return;
+    const cat = CATEGORIES.find(c => c.id === categoryId);
+    state.digDeeper.loadingBatchCategory = categoryId;
+    renderDigDeeperBatchArea();
+
+    try{
+      const system = buildSystemPrompt([{ cat, count: additiveCountFor(categoryId) }], state.digDeeper.batch.forceKeywordList, [], false, gatherExclusionData());
+      const userMsg = `Niche: ${state.niche}`;
+      const partial = await callClaudeRaw(system, userMsg, 1800);
+      state.digDeeper.batch.categories[categoryId] = partial[categoryId];
+      if(cat.kind === 'anthro' && partial.character){
+        state.digDeeper.batch.character = partial.character;
+      }
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      state.digDeeper.loadingBatchCategory = null;
+      renderDigDeeperBatchArea();
+    }
+  }
+
+  function renderDigDeeperBatchArea(){
+    const batch = state.digDeeper.batch;
+    if(!batch){ els.ddBatchArea.innerHTML = ''; return; }
+    els.ddBatchArea.innerHTML = `<p class="batch-source">Niche-deep-dive batch — drawing on: ${escapeHtml(batch.sourceLabel)}</p>` +
+      ADDITIVE_CATEGORY_IDS.map(id => {
+        const cat = CATEGORIES.find(c => c.id === id);
+        const items = batch.categories[id] || [];
+        const isLoading = state.digDeeper.loadingBatchCategory === id;
+        let bodyHtml;
+        if(isLoading){
+          bodyHtml = '<div class="status">Regenerating this category<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></div>';
+        } else {
+          const charBox = (cat.kind === 'anthro' && batch.character) ? renderCharacterBox(batch.character) : '';
+          bodyHtml = charBox + `<div class="card-grid">${items.map((item, idx) => renderCard(cat, item, idx)).join('')}</div>`;
+        }
+        return `
+          <div class="category-block">
+            <div class="category-head">
+              <span class="num">0${cat.num}</span>
+              <h3>${cat.name}</h3>
+              <button class="regen-btn" data-ddregen="${id}" ${isLoading ? 'disabled' : ''}>${isLoading ? loadingHtml('Regenerating') : '↻ Regenerate'}</button>
+            </div>
+            ${bodyHtml}
+          </div>`;
+      }).join('');
+
+    els.ddBatchArea.querySelectorAll('[data-ddregen]').forEach(btn => btn.addEventListener('click', () => regenerateDigDeeperCategory(btn.dataset.ddregen)));
+    els.ddBatchArea.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', () => copyCard(btn)));
+  }
+
+  function renderDigDeeperPanel(){
+    renderConceptChips();
+    renderDigDeeperBatchArea();
+  }
+
+  // ================= OCCASION BATCH (additive) =================
+
+  function renderOccasionChips(){
+    let html = '';
+    OCCASIONS_FIXED.forEach(occ => {
+      const selected = state.occasion.selectedOccasions.has(occ);
+      const label = (selected ? '✓ ' : '') + occ;
+      html += `<button class="kw-chip ${selected?'selected':''}" data-occkey="${escapeHtml(occ)}">${escapeHtml(label)}</button>`;
+    });
+    state.occasion.customOccasions.forEach(occ => {
+      const selected = state.occasion.selectedOccasions.has(occ);
+      const label = (selected ? '✓ ' : '') + '★ ' + occ;
+      html += `<button class="kw-chip custom ${selected?'selected':''}" data-occkey="${escapeHtml(occ)}">${escapeHtml(label)}</button>`;
+    });
+    els.occasionChips.innerHTML = html;
+    els.occasionChips.querySelectorAll('.kw-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.occkey;
+        if(state.occasion.selectedOccasions.has(key)) state.occasion.selectedOccasions.delete(key);
+        else state.occasion.selectedOccasions.add(key);
+        renderOccasionChips();
+      });
+    });
+  }
+
+  function addCustomOccasion(){
+    const val = els.occasionCustomInput.value.trim();
+    if(!val) return;
+    state.occasion.customOccasions.push(val);
+    state.occasion.selectedOccasions.add(val);
+    els.occasionCustomInput.value = '';
+    renderOccasionChips();
+  }
+
+  async function generateOccasionBatch(){
+    if(!state.niche) return;
+    if(!getApiKey()){ openSettingsModal(); return; }
+    if(state.occasion.selectedOccasions.size === 0){
+      const pendingText = (els.occasionCustomInput.value || '').trim();
+      if(pendingText){ addCustomOccasion(); }
+    }
+    const occasions = Array.from(state.occasion.selectedOccasions);
+    if(occasions.length === 0){ setStatus('Select at least one occasion first.', true); return; }
+    const requested4 = ADDITIVE_CATEGORY_IDS.map(id => ({ cat: CATEGORIES.find(c => c.id === id), count: additiveCountFor(id) }));
+    els.occasionGenerateLabel.innerHTML = loadingHtml('Generating');
+    setStatus('Generating occasion batch…');
+
+    try{
+      const system = buildSystemPrompt(requested4, [], occasions, true, gatherExclusionData());
+      const userMsg = `Niche: ${state.niche}`;
+      const result = await callClaudeRaw(system, userMsg, 2200);
+      const categories = {};
+      ADDITIVE_CATEGORY_IDS.forEach(id => { categories[id] = result[id] || []; });
+      state.occasion.batch = {
+        categories,
+        character: result.character || null,
+        sourceLabel: occasions.join(', '),
+        occasions
+      };
+      setStatus('');
+      renderOccasionPanel();
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      els.occasionGenerateBtn.disabled = false;
+      els.occasionGenerateLabel.textContent = 'Generate occasion batch';
+    }
+  }
+
+  async function regenerateOccasionCategory(categoryId){
+    if(!state.occasion.batch) return;
+    const cat = CATEGORIES.find(c => c.id === categoryId);
+    state.occasion.loadingBatchCategory = categoryId;
+    renderOccasionBatchArea();
+
+    try{
+      const system = buildSystemPrompt([{ cat, count: additiveCountFor(categoryId) }], [], state.occasion.batch.occasions, true, gatherExclusionData());
+      const userMsg = `Niche: ${state.niche}`;
+      const partial = await callClaudeRaw(system, userMsg, 1800);
+      state.occasion.batch.categories[categoryId] = partial[categoryId];
+      if(cat.kind === 'anthro' && partial.character){
+        state.occasion.batch.character = partial.character;
+      }
+    }catch(err){
+      handleApiError(err);
+    }finally{
+      state.occasion.loadingBatchCategory = null;
+      renderOccasionBatchArea();
+    }
+  }
+
+  function renderOccasionBatchArea(){
+    const batch = state.occasion.batch;
+    if(!batch){ els.occasionBatchArea.innerHTML = ''; return; }
+    els.occasionBatchArea.innerHTML = `<p class="batch-source">Occasion batch — ${escapeHtml(batch.sourceLabel)}</p>` +
+      ADDITIVE_CATEGORY_IDS.map(id => {
+        const cat = CATEGORIES.find(c => c.id === id);
+        const items = batch.categories[id] || [];
+        const isLoading = state.occasion.loadingBatchCategory === id;
+        let bodyHtml;
+        if(isLoading){
+          bodyHtml = '<div class="status">Regenerating this category<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></div>';
+        } else {
+          const charBox = (cat.kind === 'anthro' && batch.character) ? renderCharacterBox(batch.character) : '';
+          bodyHtml = charBox + `<div class="card-grid">${items.map((item, idx) => renderCard(cat, item, idx)).join('')}</div>`;
+        }
+        return `
+          <div class="category-block">
+            <div class="category-head">
+              <span class="num">0${cat.num}</span>
+              <h3>${cat.name}</h3>
+              <button class="regen-btn" data-occregen="${id}" ${isLoading ? 'disabled' : ''}>${isLoading ? loadingHtml('Regenerating') : '↻ Regenerate'}</button>
+            </div>
+            ${bodyHtml}
+          </div>`;
+      }).join('');
+
+    els.occasionBatchArea.querySelectorAll('[data-occregen]').forEach(btn => btn.addEventListener('click', () => regenerateOccasionCategory(btn.dataset.occregen)));
+    els.occasionBatchArea.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', () => copyCard(btn)));
+  }
+
+  function renderOccasionPanel(){
+    renderOccasionChips();
+    renderOccasionBatchArea();
+  }
+
+  // ---------- Shared card/character rendering ----------
+  function renderCharacterBox(character){
+    const initial = (character.name || '?').trim().charAt(0).toUpperCase();
+    return `
+      <div class="character-box">
+        <div class="avatar">${escapeHtml(initial)}</div>
+        <div>
+          <p class="cname">${escapeHtml(character.name)}</p>
+          <p class="canchor">${escapeHtml(character.visualAnchor)}</p>
+          <p class="cpersonality">${escapeHtml(character.personality)}</p>
+        </div>
+      </div>`;
+  }
+
+  function renderCard(cat, item, idx){
+    const tilt = (((idx * cat.num * 13) % 7) - 3);
+    let inner = '';
+    let copyText = '';
+
+    if(cat.kind === 'anthro'){
+      const toneClass = item.tone || 'snarky';
+      const toneLabel = { snarky: 'snarky', doubleMeaning: 'double meaning', rivalry: 'rivalry' }[toneClass] || toneClass;
+      copyText = item.dialogue || '';
+      inner = `
+        <span class="tone-badge ${toneClass}">${escapeHtml(toneLabel)}</span>
+        <p class="text">\u201C${escapeHtml(item.dialogue || '')}\u201D</p>
+        ${item.rival ? `<p class="rival-line">to ${escapeHtml(item.rival)}${item.prideAnchor ? ' · re: ' + escapeHtml(item.prideAnchor) : ''}</p>` : ''}
+      `;
+    } else if(cat.kind === 'literal'){
+      copyText = item.text || '';
+      inner = `${item.text ? `<p class="text">${escapeHtml(item.text)}</p>` : ''}${item.visual ? `<p class="visual">${escapeHtml(item.visual)}</p>` : ''}`;
+    } else if(cat.kind === 'wildcard'){
+      copyText = item.text || '';
+      inner = `<p class="text">${escapeHtml(item.text || '')}</p>${item.technique ? `<span class="technique-tag">${escapeHtml(item.technique)}</span>` : ''}`;
+    } else {
+      copyText = item.text || '';
+      inner = `<p class="text">${escapeHtml(item.text || '')}</p>`;
+    }
+
+    return `
+      <div class="pun-card" style="--tilt:${tilt}deg">
+        <button class="copy-btn" data-copy="${encodeURIComponent(copyText)}" aria-label="Copy this pun"><span class="copy-btn-visual">${COPY_ICON_SVG}</span></button>
+        <span class="meta">${cat.name}</span>
+        ${inner}
+      </div>`;
+  }
+
+  function copyCard(btn){
+    const text = decodeURIComponent(btn.dataset.copy || '');
+    const visual = btn.querySelector('.copy-btn-visual');
+    doCopy(text).then(() => {
+      btn.classList.add('copied');
+      if(visual) visual.innerHTML = '✓';
+      setTimeout(() => { btn.classList.remove('copied'); if(visual) visual.innerHTML = COPY_ICON_SVG; }, 1400);
+    });
+  }
+
+  function doCopy(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+    }
+    return fallbackCopy(text);
+  }
+  function fallbackCopy(text){
+    return new Promise((resolve) => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(ta);
+      resolve();
+    });
+  }
+
+  // ---------- Export ----------
+  function gatherAllForExport(){
+    const rows = [];
+    function pushFrom(sourceLabel, catIds, categories, character){
+      catIds.forEach(id => {
+        const cat = CATEGORIES.find(c => c.id === id);
+        const items = categories[id] || [];
+        items.forEach(item => {
+          if(cat.kind === 'anthro'){
+            rows.push({
+              source: sourceLabel,
+              category: cat.name,
+              text: item.dialogue || '',
+              extra: [item.tone ? ('tone: ' + item.tone) : '', item.rival ? ('rival: ' + item.rival) : '', item.prideAnchor ? ('pride point: ' + item.prideAnchor) : ''].filter(Boolean).join(' | ')
+            });
+          } else if(cat.kind === 'literal'){
+            rows.push({ source: sourceLabel, category: cat.name, text: item.text || '', extra: item.visual ? ('visual: ' + item.visual) : '' });
+          } else if(cat.kind === 'wildcard'){
+            rows.push({ source: sourceLabel, category: cat.name, text: item.text || '', extra: item.technique ? ('technique: ' + item.technique) : '' });
+          } else if(cat.kind === 'familiar'){
+            rows.push({ source: sourceLabel, category: cat.name, text: item.text || '', extra: [item.sourcePhrase ? ('from: ' + item.sourcePhrase) : '', item.technique ? ('technique: ' + item.technique) : ''].filter(Boolean).join(' | ') });
+          } else {
+            rows.push({ source: sourceLabel, category: cat.name, text: item.text || '', extra: '' });
+          }
+        });
+      });
+    }
+    if(state.data){
+      const catIds = CATEGORIES.filter(c => state.counts[c.id] > 0).map(c => c.id);
+      pushFrom('Original', catIds, state.data.categories, state.data.character);
+    }
+    if(state.digDeeper.batch){
+      pushFrom('Dig Deeper (' + state.digDeeper.batch.sourceLabel + ')', ADDITIVE_CATEGORY_IDS, state.digDeeper.batch.categories, state.digDeeper.batch.character);
+    }
+    if(state.occasion.batch){
+      pushFrom('Occasion (' + state.occasion.batch.sourceLabel + ')', ADDITIVE_CATEGORY_IDS, state.occasion.batch.categories, state.occasion.batch.character);
+    }
+    return rows;
+  }
+
+  function humanDateTime(){
+    return new Date().toLocaleString('en-US', { month:'long', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
+  }
+  function filenameDateTime(){
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2,'0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}-${pad(d.getMinutes())}`;
+  }
+  function filenameSafe(s){
+    return (s || 'niche').trim().replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'niche';
+  }
+  function buildRecapHeader(){
+    let lines = [];
+    lines.push(`Punslinger 2000 — ${state.niche}`);
+    lines.push(`Generated ${humanDateTime()}`);
+    lines.push('');
+    const extras = [];
+    if(state.digDeeper.batch) extras.push('Dig Deeper batch (' + state.digDeeper.batch.sourceLabel + ')');
+    if(state.occasion.batch) extras.push('Occasion batch (' + state.occasion.batch.sourceLabel + ')');
+    lines.push(`Includes: Original run${extras.length ? ', ' + extras.join(', ') : ''}`);
+    return lines.join('\n');
+  }
+
+  function exportTxt(){
+    const rows = gatherAllForExport();
+    if(rows.length === 0) return;
+    const lines = rows.map(r => `[${r.source}] [${r.category}] ${r.text}${r.extra ? '\n  (' + r.extra + ')' : ''}`);
+    const content = buildRecapHeader() + '\n\n—\n\n' + lines.join('\n\n');
+    downloadFile(`${filenameSafe(state.niche)}_Punslinger_${filenameDateTime()}.txt`, content);
+  }
+  function exportCsv(){
+    const rows = gatherAllForExport();
+    if(rows.length === 0) return;
+    const recapLines = buildRecapHeader().split('\n').map(l => csvEscape(l)).join('\n');
+    const header = 'source,category,text,extra\n';
+    const body = rows.map(r => [r.source, r.category, r.text, r.extra].map(csvEscape).join(',')).join('\n');
+    const content = recapLines + '\n\n' + header + body;
+    downloadFile(`${filenameSafe(state.niche)}_Punslinger_${filenameDateTime()}.csv`, content);
+  }
+  function csvEscape(val){ return `"${String(val || '').replace(/"/g,'""')}"`; }
+  function downloadFile(filename, content){
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // ---------- Settings modal ----------
+  function openSettingsModal(){ els.apiKeyInput.value = getApiKey(); els.settingsModal.style.display = 'flex'; }
+  function closeSettingsModal(){ els.settingsModal.style.display = 'none'; }
+
+  // ---------- Wire up ----------
+  els.generateBtn.addEventListener('click', generatePuns);
+  els.nicheInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') generatePuns(); });
+  els.openSettings.addEventListener('click', openSettingsModal);
+  els.cancelSettings.addEventListener('click', closeSettingsModal);
+  els.saveSettings.addEventListener('click', () => {
+    setApiKey(els.apiKeyInput.value.trim());
+    refreshApiStatus();
+    closeSettingsModal();
+  });
+  els.exportTxt.addEventListener('click', exportTxt);
+  els.exportCsv.addEventListener('click', exportCsv);
+  els.ddFetchBtn.addEventListener('click', fetchNicheConcepts);
+  els.occasionCustomAdd.addEventListener('click', addCustomOccasion);
+  els.occasionCustomInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') addCustomOccasion(); });
+  els.occasionGenerateBtn.addEventListener('click', generateOccasionBatch);
+
+  // ---------- Init ----------
+  refreshApiStatus();
+  renderSteppers();
+  renderOccasionChips();
+})();
+</script>
+</body>
+</html>
